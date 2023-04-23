@@ -98,6 +98,17 @@ def test_month_tax_curve():
     plt.plot(x, y)
     plt.show()
 
+def test_apply_along_axis():
+    def my_func(a):
+        # 进行简单的运算
+        return (a[0] + a[-1]) * 0.5
+    b = np.array([[1, 2, 3],
+                  [4, 5, 6],
+                  [7, 8, 9]])
+    print(np.apply_along_axis(my_func, 0, b))
+    print(np.apply_along_axis(my_func, 1, b))
+
+
 if __name__ == "__main__":
     if False:
         test_month_tax_curve()
@@ -107,4 +118,6 @@ if __name__ == "__main__":
     print("\n".join(cal_all_tax_and_detail(split_income(500 * 1000, 144000 - 1))[1])) # 多次卖出，每次卖143999
     print("\n")
     print(cal_all_tax_and_detail(split_income(500 * 1000, 500 * 1000))[1]) # 一次性全部卖出
+    #
+    test_apply_along_axis()
 
